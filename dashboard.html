@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Booking</title>
+    <style>
+    /* Global Styles */
+
+  /* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  line-height: 1.6;
+  color: #3e2e20;
+  background-color: #f7f1ea;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #8B5E3C;
+  color: white;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #6f472c;
+}
+
+/* Header */
+header {
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+
+ nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #8B5E3C;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+}
+
+.nav-links li {
+  margin-left: 30px;
+}
+
+.nav-links a:hover {
+  color: #8B5E3C;
+}
+
+/* Hero Section */
+.hero {
+  background-image: linear-gradient(rgba(60, 40, 20, 0.6), rgba(60, 40, 20, 0.6)),
+    url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: white;
+  margin-top: 60px;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+/* Destination Section */
+.destination {
+  padding: 100px 0;
+  text-align: center;
+}
+
+.destination h2 {
+  font-size: 36px;
+  color: #8B5E3C;
+  margin-bottom: 30px;
+}
+
+.destination p {
+  max-width: 800px;
+  margin: 0 auto 40px;
+}
+
+.destination-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.destination-card {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  transition: transform 0.3s;
+}
+
+.destination-card:hover {
+  transform: translateY(-5px);
+}
+
+.destination-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.destination-card h3 {
+  font-size: 20px;
+  margin: 15px;
+  color: #8B5E3C;
+}
+
+.destination-card p {
+  margin: 0 15px 15px;
+  font-size: 14px;
+}
+
+.destination-card .btn {
+  margin: 0 15px 20px;
+  display: inline-block;
+}
+
+/* Services Section */
+.services {
+  padding: 100px 0;
+  background-color: #fff;
+  text-align: center;
+}
+
+.services h2 {
+  font-size: 36px;
+  color: #8B5E3C;
+  margin-bottom: 20px;
+}
+
+.services p {
+  max-width: 700px;
+  margin: 0 auto 50px;
+  color: #5a4535;
+}
+
+.service-grid {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.service-card {
+  background: #f7f1ea;
+  padding: 30px;
+  width: 260px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.service-card img {
+  width: 60px;
+  margin-bottom: 20px;
+}
+
+.service-card h3 {
+  font-size: 20px;
+  color: #8B5E3C;
+  margin-bottom: 10px;
+}
+
+.service-card p {
+  font-size: 14px;
+  color: #444;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+}
+
+/* Pricing Section */
+.pricing {
+  padding: 100px 0;
+  background-color: #f3e8dc;
+  text-align: center;
+}
+
+.pricing h2 {
+  font-size: 36px;
+  color: #8B5E3C;
+  margin-bottom: 30px;
+}
+
+.pricing p {
+  max-width: 800px;
+  margin: 0 auto 40px;
+  color: #5a4535;
+}
+
+.plans {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.plan {
+  background-color: white;
+  border-radius: 10px;
+  padding: 30px;
+  width: 300px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.plan h3 {
+  font-size: 24px;
+  color: #8B5E3C;
+  margin-bottom: 20px;
+}
+
+.plan p {
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: bold;
+  color: #8B5E3C;
+  margin-top: 20px;
+}
+.contact {
+  padding: 100px 0;
+  background-color: #e6d3c0; /* light cappuccino background */
+  text-align: center;
+  color: #4b2e2e;
+}
+
+.contact h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.contact p {
+  max-width: 600px;
+  margin: 0 auto 40px;
+  font-size: 16px;
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 15px;
+  border: 1px solid #b89882;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #fffaf6;
+  color: #4b2e2e;
+}
+
+.contact-form button {
+  align-self: flex-start;
+}
+
+/* Auth Container */
+.auth-container {
+  display: flex;
+  min-height: calc(100vh - 60px);
+  margin-top: 60px;
+}
+
+
+  </style>
+
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+               <div class="logo">
+  <img src="c:\Users\Dexter\Downloads\assasino.jpeg" alt="Flight Logo" style="width: 120px; height: auto;">
+</div>
+
+
+                <ul class="nav-links">
+                    <li><a href="#home">HOME</a></li>
+                    <li><a href="#service">Service</a></li>
+                    <li><a href="#destination">Destinations</a></li>
+                    <li><a href="#contact">Contact us</a></li>
+                    <li><a href="login.html" id="login-link">Login</a></li>
+                    <li><a href="signup.html" id="signup-link">Sign Up</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Let's Explore The World with Us</h1>
+                <p>Planning your next trip? Our flight booking platform makes it simple, fast, and convenient to find the best flights at the best prices. Whether you're flying for business, a family vacation, or a weekend getaway, you can easily search, compare, and book flights in just a few taps. With real-time availability, secure payment options, and 24/7 support, your journey starts smoothly—right here.
+.</p>
+                <a href="#" class="btn">Learn more</a>
+            </div>
+        </div>
+    </section>
+
+<section class="services" id="service">
+  <div class="container">
+    <h2>Our Services</h2>
+    <p>We’re here to make your travel seamless. Enjoy premium features designed to support you before, during, and after your journey.</p>
+    
+    <div class="service-grid">
+      <div class="service-card">
+        <img src="https://img.icons8.com/ios-filled/100/airplane-take-off.png" alt="Flight Booking">
+        <h3>Easy Flight Booking</h3>
+        <p>Search, compare, and book flights instantly with real-time availability.</p>
+      </div>
+
+      <div class="service-card">
+        <img src="https://img.icons8.com/ios-filled/100/online-support.png" alt="Support">
+        <h3>24/7 Customer Support</h3>
+        <p>Need help? Our team is available anytime, anywhere you are.</p>
+      </div>
+
+      <div class="service-card">
+        <img src="https://img.icons8.com/ios-filled/100/lock--v1.png" alt="Secure Payments">
+        <h3>Secure Payments</h3>
+        <p>Your data is protected with top-level encryption and trusted payment gateways.</p>
+      </div>
+
+      <div class="service-card">
+        <img src="https://img.icons8.com/ios-filled/100/refund.png" alt="Refund Policy">
+        <h3>Flexible Cancellations</h3>
+        <p>Plans changed? Enjoy easy cancellations and refund options.</p>
+      </div>
+    </div>
+  </div>
+</section>
+    <!-- Destination Section -->
+   <section class="destination" id="destination">
+  <div class="container">
+    <h2>The Best Destinations</h2>
+    <p>Ready for your next adventure? Explore our curated list of top travel destinations. From iconic cities and tropical beaches to hidden gems, your perfect destination is just a click away.</p>
+    
+    <div class="destination-grid">
+      <div class="destination-card">
+        <img src="c:\Users\Dexter\Downloads\BALI.webp" alt="Bali">
+        <h3>Bali, Indonesia</h3>
+        <p>Relax on pristine beaches and explore ancient temples in this tropical paradise.</p>
+        <a href="login.html" class="btn">Book Now</a>
+      </div>
+      
+      <div class="destination-card">
+        <img src="c:\Users\Dexter\Downloads\santorini.webp" alt="Santorini">
+        <h3>Santorini, Greece</h3>
+        <p>Experience iconic sunsets and white-washed architecture over the Aegean Sea.</p>
+        <a href="login.html" class="btn">Book Now</a>
+      </div>
+      
+      <div class="destination-card">
+        <img src="c:\Users\Dexter\Downloads\peru.webp" alt="Peru">
+        <h3>Machu Picchu, Peru</h3>
+        <p>Discover the ancient Inca city nestled high in the Andes Mountains.</p>
+        <a href="login.html" class="btn">Book Now</a>
+      </div>
+      
+      <div class="destination-card">
+        <img src="c:\Users\Dexter\Downloads\japan.webp" alt="Kyoto">
+        <h3>Kyoto, Japan</h3>
+        <p>Stroll through serene temples and seasonal cherry blossoms in old Japan.</p>
+        <a href="login.html" class="btn">Book Now</a>
+      </div>
+      
+      <div class="destination-card">
+        <img src="c:\Users\Dexter\Downloads\bolivia.webp" alt="Bolivia">
+        <h3>Salar de Uyuni, Bolivia</h3>
+        <p>Witness surreal landscapes at the worlds largest salt flat.</p>
+        <a href="login.html" class="btn">Book Now</a>
+      </div>
+      <div class="destination-card">
+    <img src="c:\Users\Dexter\Downloads\newyork.webp" alt="New York">
+    <h3>New York City, USA</h3>
+    <p>Explore the city that never sleeps — from Central Park to Times Square.</p>
+    <a href="login.html" class="btn">Book Now</a>
+  </div>
+
+  <div class="destination-card">
+    <img src="c:\Users\Dexter\Downloads\paris.webp" alt="Paris">
+    <h3>Paris, France</h3>
+    <p>Fall in love with the Eiffel Tower, charming cafés, and timeless romance.</p>
+    <a href="login.html" class="btn">Book Now</a>
+  </div>
+
+  <div class="destination-card">
+    <img src="c:\Users\Dexter\Downloads\uae.webp" alt="Dubai">
+    <h3>Dubai, UAE</h3>
+    <p>Experience luxury, desert adventures, and futuristic cityscapes.</p>
+    <a href="login.html" class="btn">Book Now</a>
+  </div>
+</div>
+  </div>
+</section>
+
+<!-- Contact Us Section -->
+<section class="contact" id="contact">
+  <div class="container">
+    <h2>Contact Us</h2>
+    <p>If you have any questions or need assistance, feel free to reach out. We're here to help!</p>
+    <form class="contact-form">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+  </div>
+</section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2>Pricing Plan</h2>
+            <p>Ready to take off without breaking the bank? Our flexible pricing plans are designed to match every traveler's needs—whether you're planning a quick getaway or a luxurious adventure. Choose the package that fits your journey and enjoy transparent pricing, no hidden fees, and maximum value for your trip.</p>
+            
+            <div class="plans">
+                <div class="plan">
+                    <h3>Economy</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                    <div class="price">₱1300 Booking</div>
+                     <a href="login.html" class="btn">Book Now</a>
+                </div>
+                
+                <div class="plan">
+                    <h3>Premium Economy</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                    <div class="price">₱5000 Booking</div>
+                     <a href="login.html" class="btn">Book Now</a>
+                </div>
+                
+                <div class="plan">
+                    <h3>Exclusive</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                    <div class="price">₱9000 Booking</div>
+                     <a href="login.html" class="btn">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  
+
+</body>
+</html>

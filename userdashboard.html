@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #fdfaf5;
+      color: #4a3b2c;
+    }
+
+    header {
+      background-color: #d2b48c;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #5a3825;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links li a {
+      color: #4a3b2c;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .nav-links li a:hover {
+      color: #3e2617;
+    }
+
+    .dashboard-hero {
+      background-color: #f3e4d7;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .dashboard-hero h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .dashboard-hero p {
+      font-size: 18px;
+      color: #5a3825;
+    }
+
+    .user-section {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background-color: #fff8f0;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      color: #5a3825;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #a67c52;
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #8c6239;
+    }
+ #logoutBtn {
+  padding: 10px 20px;
+  background-color: #8c6239;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="container">
+      <div class="logo">MY TRIPS</div>
+      <ul class="nav-links">
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="plane.html">Bookings</a></li>
+        <li><a href="#">Profile</a></li>
+        <button id="logoutBtn">Logout</button>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="dashboard-hero">
+    <h1>Welcome Back, Traveler!</h1>
+    <p>Check your bookings, explore new destinations, and manage your journey all in one place.</p>
+  </section>
+
+  <section class="user-section">
+    <div class="card-grid">
+      <div class="card">
+        <h3>Upcoming Trips</h3>
+        <p>You have 2 upcoming flights.</p>
+        <a href="#" class="btn">View Details</a>
+      </div>
+
+      <div class="card">
+        <h3>Explore More</h3>
+        <p>Need inspiration? Check out our latest destination picks just for you.</p>
+        <a href="#" class="btn">Discover</a>
+      </div>
+
+      <div class="card">
+        <h3>Profile Settings</h3>
+        <p>Update your personal info, preferences, or payment details.</p>
+        <a href="#" class="btn">Edit Profile</a>
+      </div>
+    </div>
+  </section>
+<script>
+    const userName = localStorage.getItem("firstName");
+  if (userName) {
+    document.querySelector("h1").textContent = `Welcome back, ${userName}!`;
+  }
+
+  // Logout button functionality
+  document.getElementById("logoutBtn").addEventListener("click", function () {
+    // Clear stored user data
+    localStorage.removeItem("firstName");
+    localStorage.removeItem("email");
+
+    // Redirect to login page
+    window.location.href = "login.html";
+  });
+
+  const userxName = localStorage.getItem("firstName");
+  if (userxName) {
+    document.querySelector("h1").textContent = `Welcome back, ${userxName}!`;
+  }
+</script>
+
+</body>
+</html>

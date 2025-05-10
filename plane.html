@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flight Reservation Form</title>
+  <link rel="stylesheet" href="plane.css">
+</head>
+<body class="plane">
+  <div class="container">
+    <img src="c:\Users\Dexter\Downloads\494862027_675374371764662_4948329924073540117_n.jpg" alt="Airplane flying over clouds" class="header-img">
+    
+    <h1>Flight Reservation</h1>
+    <h2>Passenger Information</h2>
+
+    <form id="reservationForm">
+      <div class="section">
+        <input type="text" name="title" placeholder="Mr/Ms" required>
+        <input type="text" name="firstName" placeholder="First Name" required>
+        <input type="text" name="lastName" placeholder="Last Name" required>
+
+        <input type="date" name="dob" placeholder="Date of Birth" required>
+      </div>
+
+      <h2>Reservation Details</h2>
+      <div class="section">
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="tel" name="phone" placeholder="Phone" required>
+        <input type="text" name="address" placeholder="Street Address" required>
+        <input type="text" name="city" placeholder="City" required>
+        <input type="text" name="state" placeholder="State" required>
+        <input type="text" name="zip" placeholder="Zip" required>
+      </div>
+
+      <h2>Flight Information</h2>
+      <div class="section">
+        <select name="flightType" required>
+          <option value="">Flight Type</option>
+          <option>International</option>
+          <option>Domestic</option>
+        </select>
+
+        <input type="text" name="passport" placeholder="Passport/ID Number" required>
+        <input type="datetime-local" name="departureDate" placeholder="Departure Date & Time" required>
+        <input type="datetime-local" name="returnDate" placeholder="Return Date & Time" required>
+
+        <select name="departingFrom" required>
+          <option value="">Departing From</option>
+          <option>New York</option>
+          <option>London</option>
+        </select>
+        <input type="text" name="departingCity" placeholder="City" required>
+
+        <select name="destination" required>
+          <option value="">Destination</option>
+          <option>Paris</option>
+          <option>Tokyo</option>
+        </select>
+        <input type="text" name="destinationCity" placeholder="City" required>
+
+        <select name="airline" required>
+          <option value="">Airline</option>
+          <option>Delta</option>
+          <option>Emirates</option>
+          <option>Cebu Pacific</option>
+          <option>Philippine Airline</option>
+        </select>
+
+        <select name="fare" required>
+          <option value="">Fare</option>
+          <option>Economy</option>
+          <option>Business</option>
+        </select>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
