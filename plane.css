@@ -1,6 +1,6 @@
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  background: #8B5E3C;
+  background: linear-gradient(rgba(0, 125, 208, 0.857), white);
   margin: 8px;
   padding: 0;
 }
@@ -11,7 +11,6 @@ body {
   margin: 30px auto;
   padding: 50px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  
 }
 
 .header-img {
@@ -63,12 +62,37 @@ button {
   margin: 20px auto 0;
   padding: 14px;
   font-size: 18px;
-  background-color: #e29910;
+  background-color: #1c7d33;
   color: #fff;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+}
+/* Payment Section Tweaks */
+input[name="cvv"] {
+  max-width: 120px;
+}
+
+select[name="paymentMethod"] {
+  background-color: #f8f8f8;
+}
+
+input[name="cardNumber"]::placeholder,
+input[name="cardName"]::placeholder,
+input[name="cvv"]::placeholder,
+input[name="billingAddress"]::placeholder {
+  font-size: 14px;
+}
+
+.section select:invalid,
+.section input:invalid {
+  border-color: #141212;
+}
+
+.section select:valid,
+.section input:valid {
+  border-color: #030403;
 }
 
 button:hover {
