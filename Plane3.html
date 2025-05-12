@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flight Reservation with Payment</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #c98243d0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .container {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 800px;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .header {
+      position: relative;
+      height: 250px;
+      background: url('494822027_1310039663396721_8220231408459856898_n.png') center/cover no-repeat;
+    }
+
+    .header h1 {
+      position: absolute;
+      bottom: 14px;
+      left: 20px;
+      color: #e0e0e0;
+      font-size: 2rem;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    }
+
+    form { padding: 2rem; }
+    form h2 { margin: 1rem 0; font-size: 1.75rem; color: #333; }
+    form p.sub { margin: 1rem 0; color: #555; }
+
+    .grid { display: grid; gap: 1rem; }
+    .row-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .row-2 { grid-template-columns: 1fr 1fr; }
+    .row-1 { grid-template-columns: 1fr; }
+
+    label {
+      font-size: 0.9rem;
+      color: #444;
+      margin-bottom: 0.25rem;
+      display: block;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    input[type="radio"] {
+      width: auto;
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .radio-group label {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .btn-submit {
+      background: #18bd5b;
+      color: #fff;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn-submit:hover {
+      background: #676867;
+    }
+
+    .total {
+      font-size: 1.2rem;
+      margin: 1rem 0;
+      font-weight: bold;
+      color: #333;
+      text-align: center;
+    }
+
+    .success {
+      color: green;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    @media (max-width: 600px) {
+      .row-3, .row-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Flight Reservation</h1>
+    </div>
+
+    <form id="reservationForm">
+      <h2>Traveler Information</h2>
+      <p class="sub">Please fill out your details accurately:</p>
+
+      <div class="grid row-3">
+        <div>
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" required />
+        </div>
+        <div>
+          <label for="middleName">Middle Name</label>
+          <input type="text" id="middleName" />
+        </div>
+        <div>
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" required />
+        </div>
+      </div>
+
+      <div class="grid row-2" style="margin-top: 1rem;">
+        <div>
+          <label for="birthDate">Date of Birth</label>
+          <input type="date" id="birthDate" required />
+        </div>
+        <div>
+          <label>Gender</label>
+          <div class="radio-group">
+            <label><input type="radio" name="gender" value="male" required /> Male</label>
+            <label><input type="radio" name="gender" value="female" /> Female</label>
+            <label><input type="radio" name="gender" value="other" /> Other</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid row-2" style="margin-top: 1rem;">
+        <div>
+          <label for="nationality">Nationality</label>
+          <input type="text" id="nationality" required />
+        </div>
+        <div>
+          <label for="passportNumber">Passport Number</label>
+          <input type="text" id="passportNumber" required />
+        </div>
+      </div>
+
+      <div class="grid row-2" style="margin-top: 1rem;">
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" required />
+        </div>
+        <div>
+          <label for="phoneNumber">Phone Number</label>
+          <input type="tel" id="phoneNumber" placeholder="e.g. +1234567890" required />
+        </div>
+      </div>
+
+      <h2 style="margin-top: 2rem;">Flight Details</h2>
+
+      <div class="grid row-2">
+        <div>
+          <label for="departure">Departure City</label>
+          <input type="text" id="departure" required />
+        </div>
+        <div>
+          <label for="destination">Arrival City</label>
+          <input type="text" id="destination" required />
+        </div>
+      </div>
+
+      <div class="grid row-2" style="margin-top: 1rem;">
+        <div>
+          <label for="departureDate">Departure Date</label>
+          <input type="date" id="departureDate" required />
+        </div>
+        <div>
+          <label for="returnDate">Return Date (optional)</label>
+          <input type="date" id="returnDate" />
+        </div>
+      </div>
+
+      <div class="grid row-2" style="margin-top: 1rem;">
+        <div>
+          <label for="passengers">Number of Passengers</label>
+          <input type="number" id="passengers" min="1" value="1" required />
+        </div>
+        <div>
+          <label for="travelClass">Class</label>
+          <select id="travelClass" required>
+            <option value="economy">Economy ($150)</option>
+            <option value="business">Business ($300)</option>
+            <option value="first">First Class ($500)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Choose Airline -->
+<div class="grid row-1" style="margin-top: 1rem;">
+  <div>
+    <label for="airline">Choose Your Airline</label>
+    <select id="airline" required>
+      <option value="">-- Select Airline --</option>
+      <option value="airasia">AirAsia</option>
+      <option value="cebuPacific">Cebu Pacific</option>
+      <option value="pal">Philippine Airlines</option>
+      <option value="qatar">Qatar Airways</option>
+      <option value="emirates">Emirates</option>
+    </select>
+  </div>
+</div>
+
+      <!-- Payment Method Section -->
+      <h2 style="margin-top: 2rem;">Payment Method</h2>
+      <div class="grid row-2">
+        <div>
+          <label for="paymentMethod">Select Payment Method</label>
+          <select id="paymentMethod" required>
+            <option value="creditCard">Credit Card</option>
+            <option value="debitCard">Debit Card</option>
+            <option value="gcash">Gcash</option>
+            <option value="maya">Maya</option>
+            <option value="paypal">PayPal</option>
+            <option value="bankTransfer">Bank Transfer</option>
+          </select>
+        </div>
+        <div>
+          <label for="paymentDetails">Payment Details</label>
+          <input type="text" id="paymentDetails" placeholder="Enter payment details (e.g., credit card number)" required />
+        </div>
+      </div>
+
+      <div class="total">
+        Total Payment: $<span id="totalAmount">150</span>
+      </div>
+
+      <div style="text-align: center; margin-top: 2rem;">
+        <button type="button" class="btn-submit" onclick="submitReservation()">Submit</button>
+      </div>
+
+      <div class="success" id="confirmationMessage"></div>
+    </form>
+  </div>
+
+  <script>
+    const passengerInput = document.getElementById('passengers');
+    const classSelect = document.getElementById('travelClass');
+    const totalAmount = document.getElementById('totalAmount');
+    const confirmationMessage = document.getElementById('confirmationMessage');
+    const prices = { economy: 150, business: 300, first: 500 };
+
+    function updateTotal() {
+      const passengers = parseInt(passengerInput.value) || 1;
+      const selectedClass = classSelect.value;
+      const pricePerPerson = prices[selectedClass];
+      const total = passengers * pricePerPerson;
+      totalAmount.textContent = total;
+    }
+
+    passengerInput.addEventListener('input', updateTotal);
+    classSelect.addEventListener('change', updateTotal);
+    updateTotal(); // Initial calculation
+
+    function submitReservation() {
+      const name = document.getElementById('firstName').value.trim();
+      if (name === "") {
+        alert("Please enter your first name.");
+        return;
+      }
+      const total = totalAmount.textContent;
+      confirmationMessage.textContent = `Payment of $${total} successful. Thank you, ${name}, for your reservation!`;
+    }
+  </script>
+  <script>
+  const seatMap = document.getElementById("seat-map");
+  const selectedSeatsDisplay = document.getElementById("selected-seats");
+
+  const totalSeats = 30; // 5 rows of 6 seats
+  const bookedSeats = [3, 5, 12, 18]; // Hardcoded booked seat numbers
+
+  const selectedSeats = new Set();
+
+  function renderSeats() {
+    for (let i = 1; i <= totalSeats; i++) {
+      const seat = document.createElement("div");
+      seat.textContent = i;
+      seat.classList.add("seat");
+      seat.style.padding = "10px";
+      seat.style.border = "1px solid #aaa";
+      seat.style.textAlign = "center";
+      seat.style.cursor = "pointer";
+      seat.style.borderRadius = "6px";
+
+      if (bookedSeats.includes(i)) {
+        seat.style.backgroundColor = "#ccc";
+        seat.style.cursor = "not-allowed";
+        seat.title = "Seat taken";
+      } else {
+        seat.addEventListener("click", () => {
+          if (selectedSeats.has(i)) {
+            selectedSeats.delete(i);
+            seat.style.backgroundColor = "";
+          } else {
+            selectedSeats.add(i);
+            seat.style.backgroundColor = "#4caf50";
+          }
+          updateSelectedSeats();
+        });
+      }
+
+      seatMap.appendChild(seat);
+    }
+  }
+
+  function updateSelectedSeats() {
+    if (selectedSeats.size === 0) {
+      selectedSeatsDisplay.textContent = "None";
+    } else {
+      selectedSeatsDisplay.textContent = Array.from(selectedSeats).sort((a, b) => a - b).join(", ");
+    }
+  }
+
+  renderSeats();
+</script>
+
+</body>
+</html>
