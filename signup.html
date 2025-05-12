@@ -1,53 +1,162 @@
-<span style="font-family: verdana, geneva, sans-serif;"><!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <title>Sign Up</title>
-      <link rel="stylesheet" href="styles.css" />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
-        rel="stylesheet"
-      />
-    </head>
-    <body>
-      <div class="signup-box">
-          <a href="dashboard.html" class="btn">Dashboard</a>
-        <h1>Sign Up</h1>
-        <form>
-          <label>First Name</label>
-          <input type="text" placeholder="Ex: Juan" required />
-          <label>Last Name</label>
-          <input type="text" placeholder="Ex: Dela Cruz" required/>
-          <label>Email</label>
-          <input type="email" placeholder="juandelacruz@gmail.com" required/>
-          <label>Password</label>
-          <input type="password" placeholder="************" required />
-          <label>Confirm Password</label>
-          <input type="password" placeholder="************" required/>
-          <p class="para-2">
-            Already have an account? <a href="login.html">Login here</a>
-          </p>
-          <button>Submit</button>
-        </form>
-       
-      </div>
-     
-<script>
-  const signupForm = document.querySelector("form");
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: 'Verdana', Geneva, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f5f0;
+      }
 
-  signupForm.addEventListener("submit", function (e) {
-    e.preventDefault();
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        background-color: #d8c3a5;
+        padding: 10px 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+      }
 
-    const firstName = signupForm.querySelector("input[placeholder='Ex: Juan']").value;
-    const email = signupForm.querySelector("input[type='email']").value;
+      .navbar .btn {
+        text-decoration: none;
+        background-color: #8e735b;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: bold;
+        transition: background 0.3s ease;
+      }
 
-    // Save data to localStorage
-    localStorage.setItem("firstName", firstName);
-    localStorage.setItem("email", email);
+      .navbar .btn:hover {
+        background-color: #7b624a;
+      }
 
-    // Redirect to dashboard
-    window.location.href = "userdashboard.html";
-  });
-</script>
+      .signup-box {
+        max-width: 400px;
+        margin: 120px auto;
+        padding: 30px;
+        border-radius: 10px;
+        background-color: #fffaf5;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      }
 
-    </body>
-  </html></span> 
+      h1 {
+        text-align: center;
+        color: #5e4630;
+      }
+
+      label {
+        font-weight: bold;
+        color: #5e4630;
+        display: block;
+        margin-top: 15px;
+      }
+
+      form input {
+        width: 100%;
+        padding: 12px;
+        margin-top: 8px;
+        border: 1px solid #d8c3a5;
+        border-radius: 6px;
+        background-color: #fdfaf6;
+        box-sizing: border-box;
+        transition: border-color 0.3s;
+      }
+
+      form input:focus {
+        border-color: #a1866f;
+        outline: none;
+      }
+
+      form button {
+        margin-top: 20px;
+        width: 100%;
+        padding: 12px;
+        background-color: #5e4630;
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      form button:hover {
+        background-color: #4a3726;
+      }
+
+      .para-2 {
+        font-size: 14px;
+        margin-top: 15px;
+        text-align: center;
+        color: #5e4630;
+      }
+
+      .para-2 a {
+        color: #8e735b;
+        font-weight: bold;
+        text-decoration: none;
+      }
+
+      .para-2 a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <a href="dashboard.html" class="btn">Dashboard</a>
+    </div>
+
+    <div class="signup-box">
+      <h1>Sign Up</h1>
+      <form>
+        <label>First Name</label>
+        <input type="text" placeholder="Ex: Juan" required />
+        <label>Last Name</label>
+        <input type="text" placeholder="Ex: Dela Cruz" required />
+        <label>Email</label>
+        <input type="email" placeholder="juandelacruz@gmail.com" required />
+        <label>Password</label>
+        <input type="password" placeholder="************" required />
+        <label>Confirm Password</label>
+        <input type="password" placeholder="************" required />
+        <p class="para-2">
+          Already have an account? <a href="login.html">Login here</a>
+        </p>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+    <script>
+      const signupForm = document.querySelector("form");
+
+      signupForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const firstName = signupForm.querySelector("input[placeholder='Ex: Juan']").value;
+        const email = signupForm.querySelector("input[type='email']").value;
+
+        // Save data to localStorage
+        localStorage.setItem("firstName", firstName);
+        localStorage.setItem("email", email);
+
+        // Redirect to dashboard
+        window.location.href = "userdashboard.html";
+      });
+    </script>
+  </body>
+</html>
