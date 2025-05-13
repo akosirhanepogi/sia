@@ -142,6 +142,24 @@
       background-color: #4a3726;
     }
 
+    .btn-edit {
+      background-color: #4a9e6d;
+      color: white;
+    }
+
+    .btn-edit:hover {
+      background-color: #3c8e5c;
+    }
+
+    .btn-delete {
+      background-color: #e57373;
+      color: white;
+    }
+
+    .btn-delete:hover {
+      background-color: #d45e5e;
+    }
+
     .btn-logout {
       background-color: #c45e5e;
       color: white;
@@ -195,6 +213,7 @@
             <th>Name</th>
             <th>Email</th>
             <th>Flight Number</th>
+            <th>Time</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -203,19 +222,31 @@
             <td>Juan Dela Cruz</td>
             <td>juan@example.com</td>
             <td>FL123</td>
-            <td><button class="btn btn-primary">Details</button></td>
+            <td>10:00 AM</td>
+            <td>
+              <button class="btn btn-edit" onclick="editUser('juan@example.com', 'Juan Dela Cruz', 'FL123', '10:00 AM')">Edit</button>
+              <button class="btn btn-delete" onclick="deleteUser('juan@example.com')">Delete</button>
+            </td>
           </tr>
           <tr>
             <td>Maria Santos</td>
             <td>maria@example.com</td>
             <td>FL456</td>
-            <td><button class="btn btn-primary">Details</button></td>
+            <td>02:30 PM</td>
+            <td>
+              <button class="btn btn-edit" onclick="editUser('maria@example.com', 'Maria Santos', 'FL456', '02:30 PM')">Edit</button>
+              <button class="btn btn-delete" onclick="deleteUser('maria@example.com')">Delete</button>
+            </td>
           </tr>
           <tr>
             <td>Carlos Reyes</td>
             <td>carlos@example.com</td>
             <td>FL789</td>
-            <td><button class="btn btn-primary">Details</button></td>
+            <td>06:45 PM</td>
+            <td>
+              <button class="btn btn-edit" onclick="editUser('carlos@example.com', 'Carlos Reyes', 'FL789', '06:45 PM')">Edit</button>
+              <button class="btn btn-delete" onclick="deleteUser('carlos@example.com')">Delete</button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -223,6 +254,42 @@
   </div>
 
   <script>
+    function editUser(email, name, flightNumber, time) {
+      const newName = prompt('Edit Name:', name);
+      const newFlightNumber = prompt('Edit Flight Number:', flightNumber);
+      const newTime = prompt('Edit Time:', time);
+
+      if (newName && newFlightNumber && newTime) {
+        // Find the row in the table that matches the email
+        const rows = document.querySelectorAll('.activity-table tbody tr');
+        rows.forEach(row => {
+          const rowEmail = row.querySelector('td:nth-child(2)').textContent;
+          if (rowEmail === email) {
+            // Update the name, flight number, and time in the table
+            row.querySelector('td:nth-child(1)').textContent = newName;
+            row.querySelector('td:nth-child(3)').textContent = newFlightNumber;
+            row.querySelector('td:nth-child(4)').textContent = newTime;
+          }
+        });
+
+        alert(`User info updated:\nName: ${newName}\nFlight Number: ${newFlightNumber}\nTime: ${newTime}`);
+      }
+    }
+
+    function deleteUser(email) {
+      if (confirm(`Are you sure you want to delete the user with email: ${email}?`)) {
+        // Find and remove the row from the table
+        const rows = document.querySelectorAll('.activity-table tbody tr');
+        rows.forEach(row => {
+          const rowEmail = row.querySelector('td:nth-child(2)').textContent;
+          if (rowEmail === email) {
+            row.remove();
+          }
+        });
+        alert(`User with email ${email} has been deleted.`);
+      }
+    }
+
     document.getElementById('logoutBtn').addEventListener('click', function(e) {
       e.preventDefault();
       if (confirm('Are you sure you want to logout?')) {
